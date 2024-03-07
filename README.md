@@ -1,27 +1,27 @@
-# MetaMask Providers
+# Metatron Providers
 
-The Ethereum provider object injected by MetaMask into various environments.
-Contains a lot of implementation details specific to MetaMask, and is probably
+The Ethereum provider object injected by Metatron into various environments.
+Contains a lot of implementation details specific to Metatron, and is probably
 not suitable for out-of-the-box use with other wallets.
 
 The `BaseProvider` implements the Ethereum JavaScript provider specification ([EIP-1193]), but must be modified by a sub-class in order to function.
 `StreamProvider` is such a sub-class, which synchronizes its state and marshals JSON-RPC messages via a duplex stream.
-`MetamaskInpageProvider` further extends `StreamProvider` to support legacy provider interfaces in addition to [EIP-1193], and is used to instantiate the object injected by MetaMask into web pages as `window.ethereum`.
+`MetatronInpageProvider` further extends `StreamProvider` to support legacy provider interfaces in addition to [EIP-1193], and is used to instantiate the object injected by Metatron into web pages as `window.ethereum`.
 
 ## Usage
 
 ```javascript
-import { initializeProvider } from '@metamask/providers';
+import { initializeProvider } from '@metatron/providers';
 
 // Create a stream to a remote provider:
-const metamaskStream = new LocalMessageDuplexStream({
+const metatronStream = new LocalMessageDuplexStream({
   name: 'inpage',
   target: 'contentscript',
 });
 
 // this will initialize the provider and set it as window.ethereum
 initializeProvider({
-  connectionStream: metamaskStream,
+  connectionStream: metatronStream,
 });
 
 const { ethereum } = window;
@@ -55,7 +55,7 @@ Run `yarn lint` to run the linter, or run `yarn lint:fix` to run the linter and 
 
 ### Release & Publishing
 
-The project follows the same release process as the other libraries in the MetaMask organization:
+The project follows the same release process as the other libraries in the Metatron organization:
 
 1. Create a release branch
    - For a typical release, this would be based on `main`
